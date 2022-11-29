@@ -115,7 +115,68 @@ error-output{
     color: red;
 }
                                    
+/*UC3*/
+.profile-radio-content{
+    display: flex;
+    flex-direction: row;
+}
+ 
+.profile-radio-content > label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+ 
+.profile{
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 12px;
+}
 
+    </style>
+</head>
+<body>
+    <header class="header-content header">
+       <div class="logo-content">
+            <img src="../assets-20221114T041410Z-001/assets/images/logo.png" alt="">
+            <div>
+               <span class="emp-txt">EMPLOYEE</span><br>
+               <span class="emp-txt emp-payroll">PAYROLL</span>
+            </div>
+       </div>
+   </header>
+             <!--UC2-->
+    <div class="form-content">
+        <form class="form" action="#" onsubmit="Save()">
+                <div class="form-head">Employee Payroll Form</div>
+                <div class="row-content">
+                        <label class="label text" for="name">Name</label>
+                        <input class="input" type="text" id="name" name="name" placeholder="Your name.." required>
+                        <error-output class="text-error" for="text"> </error-output>
+                </div>
+
+                <!--UC3-->
+                <div class="row-content">
+                    <label class="label text" for="profile">Profile image</label>
+                    <div class="profile-radio-content">
+                        <label>
+                            <input type="radio" id="profile1" name="profile" value="../assets/profile-images/Ellipse -3.png" required>
+                            <img class="profile" id="image1" src="../assets-20221114T041410Z-001/assets/profile-images/Ellipse -3.png">
+                        </label>
+                        <label>
+                            <input type="radio" id="profile2" name="profile" value="../assets/profile-images/Ellipse 1.png" required>
+                            <img class="profile" id="image2" src="../assets-20221114T041410Z-001/assets/profile-images/Ellipse 1.png">
+                        </label>
+                        <label>
+                            <input type="radio" id="profile3" name="profile" value="../assets/profile-images/Ellipse -8.png" required>
+                            <img class="profile" id="image3" src="../assets-20221114T041410Z-001/assets/profile-images/Ellipse -8.png">
+                        </label>
+                        <label>
+                            <input type="radio" id="profile4" name="profile" value="../assets/profile-images/Ellipse -7.png" required>
+                            <img class="profile" id="image4" src="../assets-20221114T041410Z-001/assets/profile-images/Ellipse -7.png">
+                        </label>
+                    </div>
+                </div>
 
 
 
