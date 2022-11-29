@@ -164,3 +164,30 @@ class EmployeePayrollData {
                                         " "+ getInputValueById('#year') ;
     employeePayrollObj._startDate = date;
     }
+    // sethod toString() (-
+const createAndUpdateStorage=() => {
+    let employeePayrollList = JSON.parse(localStorage.getItem("Employee PayrollList"));
+    if(employeePayrollList){
+        let empPayrollData = employeePayrollList.
+            find(empData=>empData._id==employeePayrollObj._id);
+            if (!empPayrollData) {
+                employeePayrollList.push(createEmployeePayrollData());
+            } else {
+                const index= employeePayrollList
+                                .map(empData=> empData._id)
+                                 .indexOf(empPayrollData._id);
+                employeePayrollList.splice(index, 1,
+                                          createEmployeePayrollData(empPayrollData._id));
+                }                       
+    } else{
+        employeePayrollList = [createEmployeePayrollData()]
+}
+localStorage.setItem("Employee PayrollList", JSON.stringify(employeePayrollList))
+const createEmployeePayrollData=(id)=> {
+    let employeePayrollData = new EmployeePayrollData();
+     if (!id) employeePayrollData.id = createNewEmployeeId();
+     else employeePayrollData.id = id;
+    setEmployeePayrollData(employeePayrollData);
+     return employeePayrollData;
+}
+}
