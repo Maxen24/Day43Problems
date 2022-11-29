@@ -99,3 +99,68 @@ class EmployeePayrollData {
     }
     
     }
+    window.addEventListener('DOMContentLoaded', (event)=> {
+        const name= document.querySelector('#name');
+        const textError = document.querySelector('.text-error');
+        name.addEventListener('input', function() {
+            if(name.value.length==0) {
+                textError.textContent="";
+                return;
+            }
+            try {
+                new employeePayrollData().name=name.value;
+                textError.textContent = "";
+    
+            } catch (e){
+                textError.textContent=e;
+            }
+        });
+    });
+    
+    const date = document.querySelector('#date');
+    date.addEventListener('input', function() {
+        const startDate = new Date(Date.parse(getInputValueById('#day')+" "+
+                                            getInputValueById('#month')+""+
+                                            getInputValueById('#year')));
+    
+    try {
+        (new EmployeePayrollData()).startDate = startDate;
+        setTextValue('.date-error', "");
+     }catch (e) {
+        setTextValue('.date-error', e);
+    } });
+    const salary =document.querySelector('#salary');
+    setTextValue('.salary-output', salary.value); 
+    salary.addEventListener('input', function() { 
+        setTextValue('.salary-output', salary.value);
+    });
+    
+    checkForUpdate();
+    
+    ///
+    
+    
+    const save = (event) => { 
+        event.preventDefault();
+        event.stopPropagation();
+        try {
+            setEmployeePayrollObject();
+            createAndUpdateStorage(); 
+            resetForm();
+            window.location.replace(site_properties.home_page); 
+        } catch (e) {
+            return;
+        }
+    }
+    const setEmployeePayrollObject = () => { 
+        employeePayrollObj._name = getInputValueById('#name');
+        employeePayrollObj._profilePic = getSelectedValues('[name=profile]').pop();
+        employeePayrollObj.gender = getSelectedValues('[name=gender]').pop(); 
+        employeePayrollObj._department = getSelectedValues('[name=department]'); 
+        employeePayrollObt._salary = getInputValueById('#salary');
+        employeePayrollObt._note = getInputValueById('#notes');
+    
+    let date= getInputValueById('#day')+" "+getInputValueById('#month')+
+                                        " "+ getInputValueById('#year') ;
+    employeePayrollObj._startDate = date;
+    }
